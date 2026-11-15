@@ -42,9 +42,9 @@ class RemoteActivity : Activity() {
         val root = Ui.vertical(this, 10)
 
         if (editMode) {
-            root.addView(banner("EDIT MODE: tap a button to set / change its code. Use ⋮ → Done editing when finished.", Ui.ACCENT))
+            root.addView(banner("EDIT MODE: tap a button to set / change its code. Tap ✓ Done when finished.", Ui.ACCENT))
         } else if (device.unverified) {
-            root.addView(banner("Codes for this model are a best guess. If a button doesn't work: ⋮ → Find codes (Code Finder), or ⋮ → Edit mode. " +
+            root.addView(banner("Codes for this model are a best guess. If a button doesn't work: ⋮ → Find codes (Code Finder), or ✏ Edit. " +
                     "Tap here to hide this message once everything works.", Ui.WARN).apply {
                 setOnClickListener { device.unverified = false; DeviceStore.save(context); build() }
             })
@@ -102,7 +102,7 @@ class RemoteActivity : Activity() {
         } else {
             Ui.attachPress(b, k.repeat) {
                 val c = device.codes[k.id]
-                if (c == null) Ui.toast(this, "No code for “${k.label.ifEmpty { k.id }}” yet. Use ⋮ → Edit mode.")
+                if (c == null) Ui.toast(this, "No code for “${k.label.ifEmpty { k.id }}” yet. Use ✏ Edit.")
                 else ir.send(c) { e -> Ui.toast(this, e) }
             }
         }
@@ -167,7 +167,7 @@ class RemoteActivity : Activity() {
     private fun save() { DeviceStore.save(this); build() }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menu.add(0, 1, 0, if (editMode) "Done editing" else "Edit mode (change codes)")
+        menu.add(0, 1, 0, if (editMode) "✓ Done" else "✏ Edit")
             .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM)
         menu.add(0, 2, 0, "Find codes (Code Finder)")
         menu.add(0, 3, 0, "Add custom button")
@@ -177,7 +177,7 @@ class RemoteActivity : Activity() {
     }
 
     override fun onPrepareOptionsMenu(menu: Menu): Boolean {
-        menu.findItem(1)?.title = if (editMode) "Done editing" else "Edit mode (change codes)"
+        menu.findItem(1)?.title = if (editMode) "✓ Done" else "✏ Edit"
         return true
     }
 

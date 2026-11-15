@@ -43,7 +43,7 @@ class MainActivity : Activity() {
 
         root.addView(Ui.text(this,
             "Tip: tap a device to open its remote. Long-press it to rename, share or delete. " +
-            "Inside a remote use ⋮ → Edit mode to change any button's code.", 12f, Ui.DIM), Ui.matchWrap(this, 8))
+            "Inside a remote tap ✏ Edit to change any button's code.", 12f, Ui.DIM), Ui.matchWrap(this, 8))
 
         setContentView(ScrollView(this).apply { setBackgroundColor(Ui.BG); addView(root) })
     }

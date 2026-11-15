@@ -1,0 +1,12 @@
+<resources>
+    <style name="AppTheme" parent="android:Theme.Material">
+        <item name="android:colorPrimary">#1E2A3A</item>
+        <item name="android:colorPrimaryDark">#111822</item>
+        <item name="android:colorAccent">#4FC3F7</item>
+        <item name="android:windowBackground">#111822</item>
+        <item name="android:statusBarColor">#111822</item>
+        <item name="android:navigationBarColor">#111822</item>
+        <!-- Keep content below the title bar on Android 15+ (no edge-to-edge overlap). -->
+        <item name="android:windowOptOutEdgeToEdgeEnforcement">true</item>
+    </style>
+</resources>
